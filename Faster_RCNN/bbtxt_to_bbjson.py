@@ -91,8 +91,11 @@ def txttojson(txt_list, image_size=512):
 
 if __name__ == "__main__":
     # txt_list = [r"Label_bb_tri1.txt"]
-    txt_list = glob.glob(r"F:\pycharm\Chiral-molecule-detection\Faster_RCNN\data_Kagome_2\tri_label\*")
-    json_path = "0.json"
+    path = r"D:\Peer Kasten\python\Chiral-molecule-detection\Faster_RCNN\testset_tri\Annotations"
+    txt_name = "*.txt"
+    json_name = "0.json"
+    txt_list = glob.glob(os.path.join(path, txt_name))
+    json_path = os.path.join(path, json_name)
     image_size = 512
 
     json_text = txttojson(txt_list, image_size=image_size)
