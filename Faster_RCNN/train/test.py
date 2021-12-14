@@ -24,9 +24,8 @@ from detectron2.structures import BoxMode
 if __name__ == '__main__':
     freeze_support()
 
-
-    register_coco_instances("mol_val", {}, r"E:\PyProjects\Faster-RCNN\Report\testset1\img\val.json",
-                            r"E:\PyProjects\Faster-RCNN\Report\testset1\img")
+    register_coco_instances("mol_val", {}, r"F:\pycharm\Chiral-molecule-detection\Faster_RCNN\data_Kagome_2\0.json",
+                            r"F:\pycharm\Chiral-molecule-detection\Faster_RCNN\data_Kagome_2\images")
     mol_metadata = MetadataCatalog.get("mol_val")
 
     cfg = get_cfg()
@@ -48,7 +47,7 @@ if __name__ == '__main__':
     # cfg.MODEL.ROI_HEADS.IN_FEATURES = ["p2", "p3"]
     # cfg.MODEL.RPN.IN_FEATURES = ["p2","p3"]
     cfg.MODEL.RPN.NMS_THRESH = 0.5
-    cfg.MODEL.WEIGHTS = r"E:\PyProjects\Faster-RCNN\Results\Test\output\trained2.pth"
+    cfg.MODEL.WEIGHTS = r"F:\pycharm\Chiral-molecule-detection\Faster_RCNN\train\output\data_Kagome_14_synth_59_mirrored\model_final.pth"
     cfg.MODEL.RPN.PRE_NMS_TOPK_TEST = 36000
     cfg.MODEL.RPN.POST_NMS_TOPK_TEST = 6000
     cfg.TEST.DETECTIONS_PER_IMAGE = 5000
@@ -63,12 +62,9 @@ if __name__ == '__main__':
     trainer = DefaultTrainer(cfg)
     trainer.test(cfg, predictor.model, evaluator)
 
-
     from detectron2.evaluation import COCOEvaluator, inference_on_dataset
     from detectron2.data import build_detection_test_loader
 
     evaluator = COCOEvaluator("mol_val", cfg, False, output_dir="./output/")
     val_loader = build_detection_test_loader(cfg, "mol_val")
     inference_on_dataset(predictor.model, val_loader, evaluator)
-
-

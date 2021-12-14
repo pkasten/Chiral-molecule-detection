@@ -77,7 +77,7 @@ class LossEvalHook(HookBase):
 
 # ========================================================================================== #
 
-Path = r"Faster_RCNN/data"
+Path = r"F:\pycharm\Chiral-molecule-detection\Faster_RCNN\data_Kagome_14_synth_59_mirrored - Kopie"
 
 
 register_coco_instances("mol_val", {}, os.path.join(Path, r"Testset\testset.json"),
@@ -96,21 +96,21 @@ cfg.SOLVER.IMS_PER_BATCH = 2
 cfg.SOLVER.BASE_LR = 0.005  # pick a good LR
 cfg.SOLVER.CHECKPOINT_PERIOD = 2000
 cfg.SOLVER.GAMMA = 0.1
-cfg.SOLVER.STEPS = (6000,)
+cfg.SOLVER.STEPS = (900,)
 cfg.SOLVER.WARMUP_FACTOR = 1.0 / 100
 cfg.SOLVER.WARMUP_ITERS = 100
 # cfg.INPUT.MIN_SIZE_TRAIN = 0
 # cfg.INPUT.MAX_SIZE_TRAIN = 9999
 cfg.INPUT.CROP.ENABLED = True
 cfg.INPUT.CROP.SIZE = [0.9, 0.9]
-cfg.INPUT.MAX_SIZE_TRAIN = 600
-cfg.INPUT.MAX_SIZE_TEST = 600
+cfg.INPUT.MAX_SIZE_TRAIN = 1300
+cfg.INPUT.MAX_SIZE_TEST = 1300
 cfg.INPUT.MIN_SIZE_TRAIN = (50, 450)
 cfg.INPUT.MIN_SIZE_TEST = 120
 cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING = 'range'
 
 cfg.SOLVER.MOMENTUM = 0.9
-cfg.SOLVER.MAX_ITER = 8000
+cfg.SOLVER.MAX_ITER = 1000
 cfg.SOLVER.WEIGHT_DECAY = 0.001
 cfg.MODEL.PIXEL_MEAN = [127, 127, 127]
 # cfg.MODEL.BACKBONE.FREEZE_AT = 2
@@ -129,8 +129,8 @@ cfg.MODEL.ANCHOR_GENERATOR.SIZES = [[16, 32, 64, 128]]
 cfg.MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[1.0]]
 cfg.MODEL.ANCHOR_GENERATOR.ANGLES = [[0]]
 # # cfg.MODEL.RPN.BOUNDARY_THRESH = 15
-cfg.MODEL.RPN.PRE_NMS_TOPK_TRAIN = 48000
-cfg.MODEL.RPN.POST_NMS_TOPK_TRAIN = 8000
+cfg.MODEL.RPN.PRE_NMS_TOPK_TRAIN = 2000
+cfg.MODEL.RPN.POST_NMS_TOPK_TRAIN = 1000
 cfg.MODEL.RPN.NMS_THRESH = 0.5
 # cfg.MODEL.RPN.POSITIVE_FRACTION = 0.5
 # cfg.MODEL.RPN.LOSS_WEIGHT = 1.0
